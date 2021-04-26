@@ -1,10 +1,14 @@
 import socketio
+import commands.commands as cmd
+import yaml
 
 sio = socketio.Client()
+config = yaml.safe_load(open("./config.yaml"))
 
-@sio.on('my message')
+@sio.on(cmd.GET_TEMPERATURE)
 def on_message(data):
-    print('I received a message!')
+    print(f'INFO: Recieved command: {GET_TEMPERATURE}')
+    #TODO: get temperature from sensor using Pi libraries
 
 @sio.event
 def connect():
@@ -19,5 +23,9 @@ def my_message(data):
 def disconnect():
     print('disconnected from server')
 
-sio.connect('http://localhost:3000')
-sio.wait()
+try:
+    sio.connect(config['server_address'])
+    sio.wait()
+except Exception as err:
+    print("[ERROR] Something went wrong when intializing the client:")
+    print(err)
