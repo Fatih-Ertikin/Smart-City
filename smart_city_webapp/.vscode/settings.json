@@ -1,0 +1,10 @@
+{
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.options": {
+    
+    },
+    "explorer.compactFolders": false,
+    "workbench.tree.indent": 6,
+    "editor.tabSize": 2
+}

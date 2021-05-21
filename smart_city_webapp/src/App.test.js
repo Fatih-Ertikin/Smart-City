@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
@@ -8,7 +10,7 @@ test('renders learn react link', () => {
   const { getByText } = render(
     <Provider store={store}>
       <App />
-    </Provider>
+    </Provider>,
   );
 
   expect(getByText(/learn/i)).toBeInTheDocument();
