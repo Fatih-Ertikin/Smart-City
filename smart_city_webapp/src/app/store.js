@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import plantSelectReducer from '../components/plantSelect/redux/PlantSelect';
+import groundMoistureReducer from '../components/moistureSensor/slices/MoistureSensorSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    selectedPlant: plantSelectReducer,
+    moistureSensor: groundMoistureReducer,
   },
 });
 

@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import { NavigationBar } from './base/navigationBar/navigationBar';
 import { MoistureSensor } from './components/moistureSensor/MoistureSensor';
 import { MoistureHistory } from './components/moistureHistory/moistureHistory';
-import { PlantInformation } from './components/plantInformation/plantInformation';
 
 import './App.css';
 
@@ -35,7 +34,7 @@ function App() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <PlantInformation />
+            <h1>My name jeff</h1>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
