@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { setSelectedPlant } from './redux/PlantSelect';
-import { useStyles } from './styles/styles';
+import { useStyles } from './styles/plantSelect';
 
 // TODO: get plants from redux state instead of hardcoding right here
 const plants = [

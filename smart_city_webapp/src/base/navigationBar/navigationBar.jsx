@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { PlantSelect } from '../../components/plantSelect/PlantSelect';
-import { useStyles } from './styles/styles';
+import { useStyles } from './styles/navigationBar';
 
 export const NavigationBar = () => {
   const classes = useStyles();
