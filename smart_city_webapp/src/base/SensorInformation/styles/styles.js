@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { JimmyPurple } from '../../../style/globalStyles';
+import { TileShadow } from '../../../style/globalStyles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    'box-shadow': `10px 10px 12px ${JimmyPurple(0.5)}`,
+    'box-shadow': TileShadow,
   },
   sensorInfo: {
     display: 'flex',

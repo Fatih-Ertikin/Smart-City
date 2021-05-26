@@ -14,10 +14,17 @@ export const SensorData = () => {
     datasets: [
       {
         label: 'Grondvochtigheid',
-        data: [10, 20, 59, 20, 34, 24],
+        data: [10, 20, 40, 20, 34, 24],
+        fill: false,
+        backgroundColor: 'white',
+        borderColor: 'rgba(255, 99, 132, 1)',
+      },
+      {
+        label: 'Licht',
+        data: [25, 10, 13, 15.2, 13, 30],
         fill: false,
         backgroundColor: 'rgb(158, 58, 150)',
-        borderColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
       },
     ],
   };
