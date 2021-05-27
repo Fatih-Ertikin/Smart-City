@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { Line } from 'react-chartjs-2';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +45,9 @@ export const SensorData = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
+      <Typography component="h4" variant="h4" color="textSecondary">
+        Sensor data
+      </Typography>
       <Line data={data} options={options} />
     </div>
   );

@@ -8,6 +8,8 @@ import { LightSensor } from './components/lightSensor/LightSensor';
 import { SensorData } from './components/sensorData/SensorData';
 import { TileShadow } from './style/globalStyles';
 import { WaterButton } from './components/waterButton/WaterButton';
+import { PlantInformation } from './components/plantInformation/plantInformation';
+
 import './App.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
+    height: 500,
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
@@ -37,7 +40,7 @@ function App() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <h1>Rest Tile 1</h1>
+            <PlantInformation />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
