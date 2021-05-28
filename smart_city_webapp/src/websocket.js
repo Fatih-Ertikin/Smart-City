@@ -9,7 +9,7 @@ const connectionOptions = {
   transports: ['websocket'],
 };
 
-export const socket = io(ENDPOINT);
+export const socket = io(ENDPOINT, connectionOptions);
 
 socket.on('confirm_connection', () => {
   console.log('connection with server confirmed');
