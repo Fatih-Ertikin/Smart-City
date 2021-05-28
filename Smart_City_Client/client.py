@@ -10,16 +10,17 @@ tempSensor = TemperatureSensor()
 
 @sio.on(cmd.GET_TEMPERATURE)
 def on_message(data):
-    
+    print(f'INFO: Recieved command: {GET_TEMPERATURE}')
+
 
 @sio.event
 def connect():
     print('connection established')
 
-@sio.event
-def my_message(data):
-    print('message received with ', data)
-    sio.emit('my response', {'response': 27})
+@sio.on('RBP_GIVE_WATER')
+def handleGiveWater():
+    print('got command to handle water')
+
 
 @sio.event
 def disconnect():
