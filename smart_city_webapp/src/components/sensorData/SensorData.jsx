@@ -11,18 +11,18 @@ const useStyles = makeStyles((theme) => ({
 
 export const SensorData = () => {
   const data = {
-    labels: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
+    labels: [0, 1, 2, 3, 4, 5, 6],
     datasets: [
       {
         label: 'Grondvochtigheid',
-        data: [10, 20, 40, 20, 34, 24],
+        data: [10.23, 21.24, 23.42, 24.32, 50.235, 60.32],
         fill: false,
         backgroundColor: '#2b87ff',
         borderColor: '#d4f1f9',
       },
       {
         label: 'Licht',
-        data: [25, 10, 13, 15.2, 13, 30],
+        data: [22, 21.36, 22.22, 23.2, 23.43, 25.34],
         fill: false,
         backgroundColor: '#fff63d',
         borderColor: '#fff0a1',

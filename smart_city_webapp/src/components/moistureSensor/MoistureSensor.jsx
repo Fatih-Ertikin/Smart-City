@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
 import OpacityIcon from '@material-ui/icons/Opacity';
 import { SensorInformation } from '../../base/SensorInformation/sensorInformation';
 import { JimmyPurple, CardIconHeight, CardIconWidth } from '../../style/globalStyles';
@@ -14,15 +15,11 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const MoistureSensor = () => {
-  // Retrieve count from state.
-  const { groundMoisture } = useSelector((state) => state.moistureSensor);
-  // setup dispatcher.
-  const dispatch = useDispatch();
-  const [currentMoistureLevel, setMoistureLevel] = useState(0);
+const MoistureSensor = ({ soilMoistureLevel }) => {
+  const [currentSoilMoisture, setCurrentSoilMoisture] = useState(14);
   useEffect(() => {
-
-  }, [groundMoisture]);
+    setCurrentSoilMoisture(soilMoistureLevel);
+  }, [soilMoistureLevel]);
 
   const classes = useStyles();
   const getIcon = () => (<OpacityIcon className={classes.card} />);
@@ -31,9 +28,15 @@ export const MoistureSensor = () => {
     <SensorInformation
       sensorName="Grondvochtigheid"
       sensorType="Capactive V1.2"
-      currentValue={30}
-      measurementUnit="ml"
+      currentValue={currentSoilMoisture}
+      measurementUnit="%"
       iconComponent={getIcon()}
     />
   );
 };
+
+const mapStateToProps = (state) => ({
+  soilMoistureLevel: state.refreshButton.soilMoisture,
+});
+
+export default connect(mapStateToProps)(MoistureSensor);

@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme) => ({
 }));
 
 const LightSensor = ({ temperature }) => {
-  const [currentTemp, setCurrentTemp] = useState(0);
+  const [currentTemp, setCurrentTemp] = useState(22.29);
 
   useEffect(() => {
     setCurrentTemp(temperature);

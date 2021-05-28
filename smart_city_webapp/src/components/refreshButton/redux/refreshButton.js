@@ -18,8 +18,8 @@ export const refreshDataAsync = createAsyncThunk(
 export const RefreshButtonSlice = createSlice({
   name: 'waterButton',
   initialState: {
-    temperature: 0,
-    soilMoisture: 0,
+    temperature: 22.11,
+    soilMoisture: 22.63,
   },
   extraReducers: {
     [refreshDataAsync.fulfilled]: (state, action) => {
