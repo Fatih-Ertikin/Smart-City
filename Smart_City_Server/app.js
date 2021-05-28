@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
     console.log(data);
     // Server (we) ask raspberry for temperature
     socket.emit(raspberryPi.REQ_GET_TEMP, (result) => {
-      console.log(result);
+      console.log(`result: ${result}`);
     });
     // We return temperature
     callback('test');
