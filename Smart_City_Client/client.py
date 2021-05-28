@@ -28,7 +28,6 @@ async def connect(*args):
 @sio.on(raspberryCommands.GET_TEMPERATURE)
 async def getTemperature(*args):
     temperatures = tempSensor.read_temp()
-    #await sio.emit(raspberryCommands.GET_TEMPERATURE, {'data': temperatures})
     return temperatures[0]
 
 
