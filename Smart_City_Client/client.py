@@ -1,5 +1,6 @@
 import socketio
-import commands.commands as cmd
+import constants.commands as cmd
+import constants.response as res
 import yaml
 from sensorLibrary.Temperature import TemperatureSensor
 
@@ -10,16 +11,17 @@ tempSensor = TemperatureSensor()
 
 @sio.on(cmd.GET_TEMPERATURE)
 def on_message(data):
-    print(f'INFO: Recieved command: {GET_TEMPERATURE}')
-
+    temp_c, temp_f = TemperatureSensor().read_temp()
+    sio.emit(res.GET_TEMPERATURE, {'result': True, 'data': temp_c})
 
 @sio.event
 def connect():
     print('connection established')
 
-@sio.on('RBP_GIVE_WATER')
+@sio.on(cmd.GIVE_WATER)
 def handleGiveWater():
     print('got command to handle water')
+    sio.emit(res.GIVE_WATER, { 'result': True })
 
 
 @sio.event
