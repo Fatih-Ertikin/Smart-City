@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
   card: {
     width: CardIconWidth,
     height: CardIconHeight,
-    color: JimmyPurple(1),
+    color: '#fff63d',
   },
 }));
 
