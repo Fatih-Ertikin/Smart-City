@@ -1,14 +1,16 @@
 import socketio
 import commands.commands as cmd
 import yaml
+import sensorLibrary.Temperature
 
 sio = socketio.Client()
 config = yaml.safe_load(open("./config.yaml"))
 
+tempSensor = TemperatureSensor()
+
 @sio.on(cmd.GET_TEMPERATURE)
 def on_message(data):
-    print(f'INFO: Recieved command: {GET_TEMPERATURE}')
-    #TODO: get temperature from sensor using Pi libraries
+    
 
 @sio.event
 def connect():
