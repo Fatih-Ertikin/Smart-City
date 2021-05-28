@@ -17,15 +17,15 @@ export const PlantInformation = ({
       <div className={classes.wrapper}>
         <div className={classes.plantInfo}>
           <h1>Tomaten plant</h1>
-          <Typography classname={classes.plantInfoSubtitle} component="h4" variant="subtitle" color="textSecondary">
+          <Typography className={classes.plantInfoSubtitle} component="h4" color="textSecondary">
             Solanum lycopersicum
           </Typography>
           <h2>Ideale grondvochtigheid: 45</h2>
-          <Typography classname={classes.plantInfoSubtitle} component="h5" variant="subtitle" color="textSecondary">
+          <Typography className={classes.plantInfoSubtitle} component="h5" color="textSecondary">
             Bron: google.nl
           </Typography>
           <h2>Ideale belichting: 20</h2>
-          <Typography classname={classes.plantInfoSubtitle} component="h5" variant="subtitle" color="textSecondary">
+          <Typography className={classes.plantInfoSubtitle} component="h5" color="textSecondary">
             Bron: google.nl
           </Typography>
           <h2>Laatst water gegeven: 2021-05-29</h2>
