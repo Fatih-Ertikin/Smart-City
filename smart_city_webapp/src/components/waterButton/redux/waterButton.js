@@ -5,7 +5,10 @@ import { socket } from '../../../websocket';
 export const refreshAsync = createAsyncThunk(
   'refreshSensorData',
   async () => {
-    socket.emit('raspberry:cmd:readTemp');
+    socket.emit('raspberry:cmd:readTemp', null, async (err, res) => {
+      console.log(err);
+      console.log(res);
+    });
   },
 );
 

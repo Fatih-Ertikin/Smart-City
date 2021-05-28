@@ -19,11 +19,17 @@ async def index(request):
     with open('index.html') as f:
         return web.Response(text=f.read(), content_type='text/html')
 
+@sio.event
+def connect():
+    print('connection established')
+    sio.emit('confirm_connection')
+
 ## If we wanted to create a new websocket endpoint,
 ## use this decorator, passing in the name of the
 ## event we wish to listen out for
 @sio.on(raspberryCommands.GET_TEMPERATURE)
-async def getTemperature():
+async def getTemperature(data):
+    print(data)
     temperatures = tempSensor.read_temp()
     sio.emit(raspberryCommands, {'data': temperatures})
     # return temperatures[1]
