@@ -20,26 +20,18 @@ async def index(request):
         return web.Response(text=f.read(), content_type='text/html')
 
 @sio.event
-def connect(*args):
-    for i in args:
-        print(i)
+async def connect(*args):
     print('connection established')
-    sio.emit('confirm_connection')
+    await sio.emit('confirm_connection')
 
-## If we wanted to create a new websocket endpoint,
-## use this decorator, passing in the name of the
-## event we wish to listen out for
+
 @sio.on(raspberryCommands.GET_TEMPERATURE)
 async def getTemperature(*args):
-    for i in args:
-        print(i)
     temperatures = tempSensor.read_temp()
-    sio.emit(raspberryCommands, {'data': temperatures})
+    await sio.emit(raspberryCommands, {'data': temperatures})
     # return temperatures[1]
 
 
-## We bind our aiohttp endpoint to our app
-## router
 app.router.add_get('/', index)
 
 ## We kick off our server
