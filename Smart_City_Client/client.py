@@ -12,7 +12,7 @@ tempSensor = TemperatureSensor()
 
 app = Flask(__name__)
 
-socketio = SocketIO(app,ping_timeout=3,ping_interval=1)
+sio = SocketIO(app,ping_timeout=3,ping_interval=1)
 
 @sio.event
 def connect():
@@ -35,4 +35,4 @@ def disconnect(sid):
     print(f'client disconnected: {sid}')
 
 if __name__ == "__main__":
-	socketio.run(app,host="192.168.2.41")
+	sio.run(app,host="192.168.2.41")
