@@ -1,16 +1,21 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { socket } from '../../../websocket';
 
 export const refreshAsync = createAsyncThunk(
   'refreshSensorData',
-  async () => {
-    socket.emit('raspberry:cmd:readTemp', null, async (err, res) => {
-      console.log(err);
-      console.log(res);
-      return Promise.resolve(err);
-    });
-  },
+  () => new Promise((resolve, reject) => {
+    try {
+      socket.emit('raspberry:cmd:readTemp', null, async (err, res) => {
+        console.log(err);
+        console.log(res);
+        return resolve(err);
+      });
+    } catch (err) {
+      return reject(err);
+    }
+  }),
 );
 
 export const WaterButtonSlice = createSlice({

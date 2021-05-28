@@ -29,7 +29,7 @@ async def connect(*args):
 async def getTemperature(*args):
     temperatures = tempSensor.read_temp()
     #await sio.emit(raspberryCommands.GET_TEMPERATURE, {'data': temperatures})
-    return temperatures
+    return temperatures[0]
 
 
 app.router.add_get('/', index)
