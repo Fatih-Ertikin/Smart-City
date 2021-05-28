@@ -11,9 +11,7 @@ export const WaterButtonSlice = createSlice({
     giveWater: (state, action) => {
       state.isWatering = true;
 
-      socket.emit('client:requestReadTemp', {
-        data: action.payload,
-      }, (err, res) => {
+      socket.emit('raspberry:cmd:readTemp', null, (err, res) => {
         console.log(err);
         console.log(res);
       });
