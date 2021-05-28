@@ -1,7 +1,7 @@
 import socketio
 import commands.commands as cmd
 import yaml
-import sensorLibrary.Temperature
+from sensorLibrary.Temperature import TemperatureSensor
 
 sio = socketio.Client()
 config = yaml.safe_load(open("./config.yaml"))
