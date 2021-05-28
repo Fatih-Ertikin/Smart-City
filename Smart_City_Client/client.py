@@ -21,7 +21,7 @@ def connect():
 @sio.on(cmd.GIVE_WATER)
 def handleGiveWater():
     print('got command to handle water')
-    sio.emit(res.GIVE_WATER, { 'result': True })
+    emit(res.GIVE_WATER, { 'result': True })
 
 @sio.on(cmd.GET_TEMPERATURE)
 def handleGetTemperature():
@@ -35,4 +35,4 @@ def disconnect(sid):
     print(f'client disconnected: {sid}')
 
 if __name__ == "__main__":
-	sio.run(app,host="192.168.2.41")
+	sio.run(app,host="localhost")
