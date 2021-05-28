@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log(`a user connected`);
-  io.emit("confirm_connection");
+  socket.emit("confirm_connection");
 
   // React asks for temperature
   socket.on(reactClient.READ_TEMPERATURE, (data, callback) => {
