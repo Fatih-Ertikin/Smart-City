@@ -7,11 +7,7 @@ export const refreshAsync = createAsyncThunk(
   'refreshSensorData',
   () => new Promise((resolve, reject) => {
     try {
-      socket.emit('raspberry:cmd:readTemp', null, async (err, res) => {
-        console.log(err);
-        console.log(res);
-        return resolve(err);
-      });
+      socket.emit('raspberry:cmd:readTemp', null, async (res) => resolve(res));
     } catch (err) {
       return reject(err);
     }
@@ -28,7 +24,6 @@ export const WaterButtonSlice = createSlice({
   },
   extraReducers: {
     [refreshAsync.fulfilled]: (state, action) => {
-      console.log(action);
       state.temperature = action.payload;
     },
   },

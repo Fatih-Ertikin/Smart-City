@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { NavigationBar } from './base/navigationBar/navigationBar';
 import { MoistureSensor } from './components/moistureSensor/MoistureSensor';
-import { LightSensor } from './components/lightSensor/LightSensor';
+import LightSensor from './components/lightSensor/LightSensor';
 import { SensorData } from './components/sensorData/SensorData';
 import { TileShadow } from './style/globalStyles';
 import { WaterButton } from './components/waterButton/WaterButton';

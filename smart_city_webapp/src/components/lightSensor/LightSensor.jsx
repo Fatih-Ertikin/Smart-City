@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import { useSelector } from 'react-redux';
 import { SensorInformation } from '../../base/SensorInformation/sensorInformation';
 import { CardIconHeight, CardIconWidth } from '../../style/globalStyles';
 
@@ -13,17 +14,17 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LightSensor = () => {
+const LightSensor = ({ temperature }) => {
   const [currentTemp, setCurrentTemp] = useState(0);
-  const temperature = useSelector((state) => state.temperature);
+
   useEffect(() => {
+    console.log('inside useEffect');
     setCurrentTemp(temperature);
   }, [temperature]);
 
   const classes = useStyles();
   const getIcon = () => (<WbSunnyIcon className={classes.card} />);
 
-  console.log(currentTemp);
   return (
     <SensorInformation
       sensorName="Temperatuur"
@@ -34,3 +35,9 @@ export const LightSensor = () => {
     />
   );
 };
+
+const mapStateToProps = (state) => ({
+  temperature: state.waterButton.temperature,
+});
+
+export default connect(mapStateToProps)(LightSensor);

@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     selectedPlant: plantSelectReducer,
     moistureSensor: groundMoistureReducer,
-    waterButtonReducer,
+    waterButton: waterButtonReducer,
   },
 });
 
