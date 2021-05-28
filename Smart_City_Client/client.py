@@ -35,4 +35,5 @@ def disconnect(sid):
     print(f'client disconnected: {sid}')
 
 if __name__ == "__main__":
-	sio.run(app,host="localhost")
+    sio.run(app,host="localhost")
+    print(f'running sio app...')
