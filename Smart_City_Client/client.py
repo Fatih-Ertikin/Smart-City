@@ -20,7 +20,9 @@ async def index(request):
         return web.Response(text=f.read(), content_type='text/html')
 
 @sio.event
-def connect():
+def connect(*args):
+    for i in args:
+        print(i)
     print('connection established')
     sio.emit('confirm_connection')
 
@@ -28,8 +30,9 @@ def connect():
 ## use this decorator, passing in the name of the
 ## event we wish to listen out for
 @sio.on(raspberryCommands.GET_TEMPERATURE)
-async def getTemperature(data):
-    print(data)
+async def getTemperature(*args):
+    for i in args:
+        print(i)
     temperatures = tempSensor.read_temp()
     sio.emit(raspberryCommands, {'data': temperatures})
     # return temperatures[1]
