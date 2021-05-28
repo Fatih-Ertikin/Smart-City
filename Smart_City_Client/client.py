@@ -10,6 +10,9 @@ config = yaml.safe_load(open("./config.yaml"))
 tempSensor = TemperatureSensor()
 
 sio = socketio.Server(cors_allowed_origins='*')
+app = socketio.WSGIApp(sio, static_files={
+    '/': {'content_type': 'text/html', 'filename': 'index.html'}
+})
 
 @sio.event
 def connect():
@@ -31,9 +34,5 @@ def handleGetTemperature():
 def disconnect(sid):
     print(f'client disconnected: {sid}')
 
-# try:
-#     sio.connect(config['server_address'])
-#     sio.wait()
-# except Exception as err:
-#     print("[ERROR] Something went wrong when intializing the client:")
-#     print(err)
+if __name__ == '__main__':
+    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
