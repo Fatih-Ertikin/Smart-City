@@ -20,15 +20,14 @@ io.on("connection", (socket) => {
   io.emit("confirm_connection");
 
   // React asks for temperature
-  socket.on(reactClient.READ_TEMPERATURE, (data) => {
+  socket.on(reactClient.READ_TEMPERATURE, (data, callback) => {
     console.log(data);
     // Server (we) ask raspberry for temperature
     socket.emit(raspberryPi.REQ_GET_TEMP, (result) => {
       console.log(result);
     });
     // We return temperature
-    console.log("returning...");
-    return "jeffe";
+    callback('test');
   });
 });
 

@@ -1,3 +1,3 @@
 
-GET_TEMPERATURE = 'cmd:readTemperature'
-GIVE_WATER = 'cmd:giveWater'
+GET_TEMPERATURE = 'raspberry:cmd:readTemp'
+GIVE_WATER = 'raspberry:cmd:giveWater'
