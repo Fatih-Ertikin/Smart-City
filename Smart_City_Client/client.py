@@ -1,5 +1,6 @@
-import eventlet
-import socketio
+from flask import Flask, Response
+from flask import render_template
+from flask_socketio import SocketIO, emit
 import constants.commands as cmd
 import constants.response as res
 import yaml
@@ -9,10 +10,9 @@ config = yaml.safe_load(open("./config.yaml"))
 
 tempSensor = TemperatureSensor()
 
-sio = socketio.Server(cors_allowed_origins='*')
-app = socketio.WSGIApp(sio, static_files={
-    '/': {'content_type': 'text/html', 'filename': 'index.html'}
-})
+app = Flask(__name__)
+
+socketio = SocketIO(app,ping_timeout=3,ping_interval=1)
 
 @sio.event
 def connect():
@@ -34,5 +34,5 @@ def handleGetTemperature():
 def disconnect(sid):
     print(f'client disconnected: {sid}')
 
-if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('localhost', 4000)), app)
+if __name__ == "__main__":
+	socketio.run(app,host="192.168.2.41")
