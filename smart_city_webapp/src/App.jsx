@@ -49,19 +49,16 @@ function App() {
         <Grid item xs={6} sm={3}>
           <LightSensor />
         </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-            Rest Tile 2
-          </Paper>
+        <Grid item xs={6} sm={6}>
+          <WaterButton className={classes.paper} />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        {/* <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>
             Rest Tile 3
           </Paper>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
-
   );
 }
 
