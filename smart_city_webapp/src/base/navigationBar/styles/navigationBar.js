@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { JimmyPurple } from '../../../style/globalStyles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -6,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: 15,
   },
   appBar: {
-    backgroundColor: 'purple',
+    backgroundColor: JimmyPurple(0.8),
   },
   title: {
     flexGrow: 1,
