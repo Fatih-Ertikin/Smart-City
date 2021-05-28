@@ -10,8 +10,10 @@ export const WaterButtonSlice = createSlice({
   reducers: {
     giveWater: (state, action) => {
       state.isWatering = true;
-      socket.emit('REQUEST_GIVE_WATER', {
+      socket.emit('client:requestReadTemp', {
         data: action.payload,
+      }, (res) => {
+        console.log(res);
       });
     },
   },

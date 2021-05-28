@@ -1,29 +1,37 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const http = require('http');
+const http = require("http");
 const server = http.createServer(app);
-const io = require('socket.io')(server, {
+const io = require("socket.io")(server, {
   cors: {
-    origin: '*',
-  }
+    origin: "*",
+  },
 });
 
+const raspberryPi = require("./constants/raspberryPi");
+const reactClient = require("./constants/reactClient");
 
-app.get('/', (req, res) => {
-  res.send({'Test Temperatuur': 21.7})
+app.get("/", (req, res) => {
+  res.send({ "Test Temperatuur": 21.7 });
 });
 
-io.on('connection', (socket) => {
+io.on("connection", (socket) => {
   console.log(`a user connected`);
-  io.emit('confirm_connection');
+  io.emit("confirm_connection");
 
-  socket.on('REQUEST_GIVE_WATER', (msg) => {
-    io.emit('RBP_GIVE_WATER')
+  // React asks for temperature
+  socket.on(reactClient.READ_TEMPERATURE, (data) => {
+    console.log(data);
+    // Server (we) ask raspberry for temperature
+    socket.emit(raspberryPi.REQ_GET_TEMP, (result) => {
+      console.log(result);
+    });
+    // We return temperature
+    console.log("returning...");
+    return "jeffe";
   });
 });
 
-
-
 server.listen(4000, () => {
-  console.log('listening on *:4000');
+  console.log("listening on *:4000");
 });

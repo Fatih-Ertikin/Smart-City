@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Smart City Web Server",
   "main": "app.js",
+  "target": "esnext",
+  "module": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +27,7 @@
   "homepage": "https://github.com/Fatih-Ertikin/smart_city_server#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.7",
     "socket.io": "^4.0.1"
   }
 }

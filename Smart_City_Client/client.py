@@ -12,7 +12,7 @@ tempSensor = TemperatureSensor()
 @sio.on(cmd.GET_TEMPERATURE)
 def on_message(data):
     temp_c, temp_f = TemperatureSensor().read_temp()
-    sio.emit(res.GET_TEMPERATURE, {'result': True, 'data': temp_c})
+    return temp_c
 
 @sio.event
 def connect():
