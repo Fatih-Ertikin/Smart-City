@@ -23,7 +23,7 @@ async def index(request):
 ## use this decorator, passing in the name of the
 ## event we wish to listen out for
 @sio.on(raspberryCommands.GET_TEMPERATURE)
-async def getTemperature():
+async def getTemperature(data, callback):
     temp_in_celcius = tempSensor.read_temp()
     print(f'read the temp: {temp_in_celcius}')
     return temp_in_celcius
