@@ -1,10 +1,5 @@
 from aiohttp import web
 import socketio
-import constants.commands as cmd
-import constants.response as res
-import yaml
-from sensorLibrary.Temperature import TemperatureSensor
-
 
 ## creates a new Async Socket IO Server
 sio = socketio.AsyncServer()
@@ -14,38 +9,27 @@ app = web.Application()
 ## instance
 sio.attach(app)
 
-config = yaml.safe_load(open("./config.yaml"))
-
-tempSensor = TemperatureSensor()
-
+## we can define aiohttp endpoints just as we normally
+## would with no change
 async def index(request):
-    return 'TEST WEBPAGE'
+    with open('index.html') as f:
+        return web.Response(text=f.read(), content_type='text/html')
 
-@sio.event
-def connect(sid, environ, auth):
-    print('connect ', sid)
+## If we wanted to create a new websocket endpoint,
+## use this decorator, passing in the name of the
+## event we wish to listen out for
+@sio.on('message')
+async def print_message(sid, message):
+    ## When we receive a new event of type
+    ## 'message' through a socket.io connection
+    ## we print the socket ID and the message
+    print("Socket ID: " , sid)
+    print(message)
 
-@sio.on(cmd.GIVE_WATER)
-def handleGiveWater():
-    print('got command to handle water')
-    emit(res.GIVE_WATER, { 'result': True })
-
-@sio.on(cmd.GET_TEMPERATURE)
-def handleGetTemperature():
-    temp_c, temp_f = TemperatureSensor().read_temp()
-    print(f'got command | result: {temp_c}')
-    return None, temp_c
-
-
-@sio.event
-def disconnect(sid):
-    print('disconnect ', sid)
-
-
+## We bind our aiohttp endpoint to our app
+## router
 app.router.add_get('/', index)
 
-if __name__ == "__main__":
-    print(f'running server app...')
+## We kick off our server
+if __name__ == '__main__':
     web.run_app(app)
-
-    

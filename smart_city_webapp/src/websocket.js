@@ -1,6 +1,6 @@
 const io = require('socket.io-client');
 
-const ENDPOINT = 'http://192.168.43.178:4000';
+const ENDPOINT = '192.168.43.178:8080';
 // 192.168.43.178
 const connectionOptions = {
   'force new connection': true,
