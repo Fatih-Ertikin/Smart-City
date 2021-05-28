@@ -10,7 +10,7 @@ config = yaml.safe_load(open("./config.yaml"))
 tempSensor = TemperatureSensor()
 
 @sio.on(cmd.GET_TEMPERATURE)
-def handleGetTemperature:
+def handleGetTemperature():
     temp_c, temp_f = TemperatureSensor().read_temp()
     print(f'got command | result: {temp_c}')
     return temp_c
