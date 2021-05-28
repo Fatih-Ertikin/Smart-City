@@ -1,6 +1,9 @@
 const io = require('socket.io-client');
 
-const ENDPOINT = '192.168.43.178:8080';
+const RES_TEMPERATUE = 'raspberry:res:readTemp';
+const RES_SOIL_MOISTURE = 'raspberry:res:readSoilMoisture';
+
+const ENDPOINT = '192.168.1.92:8080';
 // 192.168.43.178
 // const connectionOptions = {
 //   'force new connection': true,
@@ -13,4 +16,8 @@ export const socket = io(ENDPOINT);
 
 socket.on('confirm_connection', () => {
   console.log('connection with server confirmed');
+});
+
+socket.on(RES_TEMPERATUE, (res) => {
+  console.log(res);
 });

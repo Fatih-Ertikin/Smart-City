@@ -23,10 +23,10 @@ async def index(request):
 ## use this decorator, passing in the name of the
 ## event we wish to listen out for
 @sio.on(raspberryCommands.GET_TEMPERATURE)
-async def getTemperature(data, callback):
-    temp_in_celcius = tempSensor.read_temp()
-    print(f'read the temp: {temp_in_celcius}')
-    return temp_in_celcius
+async def getTemperature():
+    temperatures = tempSensor.read_temp()
+    sio.emit(raspberryCommands, {'data': temperatures})
+    # return temperatures[1]
 
 
 ## We bind our aiohttp endpoint to our app

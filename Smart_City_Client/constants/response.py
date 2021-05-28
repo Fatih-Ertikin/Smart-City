@@ -1,3 +1,3 @@
 
-GET_TEMPERATURE = 'raspberry:temperature'
-GIVE_WATER = 'raspberry:giveWaterResult'
+RES_TEMPERATUE = 'raspberry:res:readTemp'
+RES_SOIL_MOISTURE = 'raspberry:res:readSoilMoisture'

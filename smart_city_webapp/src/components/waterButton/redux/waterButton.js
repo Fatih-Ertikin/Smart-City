@@ -1,27 +1,33 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { socket } from '../../../websocket';
+
+export const refreshAsync = createAsyncThunk(
+  'refreshSensorData',
+  async () => {
+    socket.emit('raspberry:cmd:readTemp');
+  },
+);
 
 export const WaterButtonSlice = createSlice({
   name: 'waterButton',
   initialState: {
-    isWatering: false,
+    temperature: 0,
   },
   reducers: {
-    giveWater: (state, action) => {
-      state.isWatering = true;
 
-      socket.emit('raspberry:cmd:readTemp', null, (err, res) => {
-        console.log(err);
-        console.log(res);
-      });
+  },
+  extraReducers: {
+    [refreshAsync.fulfilled]: (state, action) => {
+      console.log(action);
+      state.temperature = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
-  giveWater,
+  refreshSensorData,
 } = WaterButtonSlice.actions;
 
 export default WaterButtonSlice.reducer;
