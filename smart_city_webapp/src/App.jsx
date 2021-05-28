@@ -7,7 +7,7 @@ import { MoistureSensor } from './components/moistureSensor/MoistureSensor';
 import LightSensor from './components/lightSensor/LightSensor';
 import { SensorData } from './components/sensorData/SensorData';
 import { TileShadow } from './style/globalStyles';
-import { WaterButton } from './components/waterButton/WaterButton';
+import { RefreshButton } from './components/refreshButton/RefreshButton';
 import { PlantInformation } from './components/plantInformation/plantInformation';
 
 import './App.css';
@@ -50,7 +50,7 @@ function App() {
           <LightSensor />
         </Grid>
         <Grid item xs={6} sm={6}>
-          <WaterButton className={classes.paper} />
+          <RefreshButton className={classes.paper} />
         </Grid>
         {/* <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>

@@ -36,7 +36,7 @@ const LightSensor = ({ temperature }) => {
 };
 
 const mapStateToProps = (state) => ({
-  temperature: state.waterButton.temperature,
+  temperature: state.refreshButton.temperature,
 });
 
 export default connect(mapStateToProps)(LightSensor);
