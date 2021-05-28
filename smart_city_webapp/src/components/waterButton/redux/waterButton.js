@@ -8,6 +8,7 @@ export const refreshAsync = createAsyncThunk(
     socket.emit('raspberry:cmd:readTemp', null, async (err, res) => {
       console.log(err);
       console.log(res);
+      return Promise.resolve(err);
     });
   },
 );

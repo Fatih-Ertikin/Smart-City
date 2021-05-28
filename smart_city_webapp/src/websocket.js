@@ -1,7 +1,7 @@
 const io = require('socket.io-client');
 
-const RES_TEMPERATUE = 'raspberry:res:readTemp';
-const RES_SOIL_MOISTURE = 'raspberry:res:readSoilMoisture';
+export const RES_TEMPERATUE = 'raspberry:res:readTemp';
+export const RES_SOIL_MOISTURE = 'raspberry:res:readSoilMoisture';
 
 const ENDPOINT = '192.168.1.92:8080';
 // 192.168.43.178
