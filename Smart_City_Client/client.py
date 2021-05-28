@@ -1,22 +1,29 @@
-from flask import Flask, Response
-from flask import render_template
-from flask_socketio import SocketIO, emit
+from aiohttp import web
+import socketio
 import constants.commands as cmd
 import constants.response as res
 import yaml
 from sensorLibrary.Temperature import TemperatureSensor
 
+
+## creates a new Async Socket IO Server
+sio = socketio.AsyncServer()
+## Creates a new Aiohttp Web Application
+app = web.Application()
+# Binds our Socket.IO server to our Web App
+## instance
+sio.attach(app)
+
 config = yaml.safe_load(open("./config.yaml"))
 
 tempSensor = TemperatureSensor()
 
-app = Flask(__name__)
-
-sio = SocketIO(app,ping_timeout=3,ping_interval=1)
+async def index(request):
+    return 'TEST WEBPAGE'
 
 @sio.event
-def connect():
-    print('connection established')
+def connect(sid, environ, auth):
+    print('connect ', sid)
 
 @sio.on(cmd.GIVE_WATER)
 def handleGiveWater():
@@ -32,8 +39,13 @@ def handleGetTemperature():
 
 @sio.event
 def disconnect(sid):
-    print(f'client disconnected: {sid}')
+    print('disconnect ', sid)
+
+
+app.router.add_get('/', index)
 
 if __name__ == "__main__":
-    sio.run(app,host="localhost")
-    print(f'running sio app...')
+    print(f'running server app...')
+    web.run_app(app)
+
+    
