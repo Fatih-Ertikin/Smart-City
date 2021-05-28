@@ -3,7 +3,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { socket } from '../../../websocket';
 
-export const refreshAsync = createAsyncThunk(
+export const refreshDataAsync = createAsyncThunk(
   'refreshSensorData',
   () => new Promise((resolve, reject) => {
     try {
@@ -14,24 +14,16 @@ export const refreshAsync = createAsyncThunk(
   }),
 );
 
-export const WaterButtonSlice = createSlice({
+export const RefreshButtonSlice = createSlice({
   name: 'waterButton',
   initialState: {
     temperature: 0,
   },
-  reducers: {
-
-  },
   extraReducers: {
-    [refreshAsync.fulfilled]: (state, action) => {
+    [refreshDataAsync.fulfilled]: (state, action) => {
       state.temperature = action.payload;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const {
-  refreshSensorData,
-} = WaterButtonSlice.actions;
-
-export default WaterButtonSlice.reducer;
+export default RefreshButtonSlice.reducer;

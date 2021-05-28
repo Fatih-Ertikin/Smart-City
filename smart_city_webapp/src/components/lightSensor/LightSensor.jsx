@@ -18,7 +18,6 @@ const LightSensor = ({ temperature }) => {
   const [currentTemp, setCurrentTemp] = useState(0);
 
   useEffect(() => {
-    console.log('inside useEffect');
     setCurrentTemp(temperature);
   }, [temperature]);
 

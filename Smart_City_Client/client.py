@@ -3,8 +3,11 @@ import socketio
 import constants.commands as raspberryCommands
 import constants.response as raspberryResponses
 from sensorLibrary.Temperature import TemperatureSensor
+from sensorLibrary.SoilMoisture import SoilMoistureSensor
+
 
 tempSensor = TemperatureSensor()
+soilSensor = SoilMoistureSensor()
 
 ## creates a new Async Socket IO Server
 sio = socketio.AsyncServer(cors_allowed_origins='http://localhost:3000')
@@ -30,6 +33,10 @@ async def getTemperature(*args):
     temperatures = tempSensor.read_temp()
     return temperatures[0]
 
+@sio.on(raspberryCommands.GET_SOIL_MOISTURE)
+async def getSoilMoisture(*args):
+    soilMoisture = soilSensor.read_soil_moisture()
+    return soilMoisture
 
 app.router.add_get('/', index)
 

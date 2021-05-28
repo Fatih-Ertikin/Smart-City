@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import { refreshAsync } from './redux/waterButton';
+import { refreshDataAsync } from './redux/refreshButton';
 
 export const WaterButton = () => {
   const dispatch = useDispatch();
@@ -10,9 +10,9 @@ export const WaterButton = () => {
     <Button
       variant="contained"
       color="secondary"
-      onClick={() => dispatch(refreshAsync())}
+      onClick={() => dispatch(refreshDataAsync())}
     >
-      Bewateren
+      Laatste data ophalen
     </Button>
   );
 };
