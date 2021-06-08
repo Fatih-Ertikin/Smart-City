@@ -1,9 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import { plantTemplates } from '../../../constants/plantTemplates';
 
 export const PlantSelectSlice = createSlice({
   name: 'plantInformation',
   initialState: {
+    plantTemplates,
     selectedPlant: {
       id: 0,
       name: '',

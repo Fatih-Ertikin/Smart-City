@@ -39,7 +39,9 @@ async def getSoilMoisture(*args):
     return soilMoisture
 
 app.router.add_get('/', index)
+print('here1')
 
 ## We kick off our server
 if __name__ == '__main__':
     web.run_app(app)
+    print('here2')
