@@ -1,5 +1,6 @@
 from aiohttp import web
 import socketio
+import time
 import constants.commands as raspberryCommands
 import constants.response as raspberryResponses
 from sensorLibrary.Temperature import TemperatureSensor
@@ -27,7 +28,6 @@ async def connect(*args):
     print('connection established')
     await sio.emit('confirm_connection')
 
-
 @sio.on(raspberryCommands.GET_TEMPERATURE)
 async def getTemperature(*args):
     temperatures = tempSensor.read_temp()
@@ -35,8 +35,9 @@ async def getTemperature(*args):
 
 @sio.on(raspberryCommands.GET_SOIL_MOISTURE)
 async def getSoilMoisture(*args):
-    soilMoisture = soilSensor.read_soil_moisture()
-    return soilMoisture
+    #soilMoisture = soilSensor.read_soil_moisture()
+    #return soilMoisture
+    return 50.25
 
 app.router.add_get('/', index)
 print('here1')
