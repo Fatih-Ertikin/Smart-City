@@ -39,6 +39,11 @@ async def getSoilMoisture(*args):
     #return soilMoisture
     return 50.25
 
+@sio.on(raspberryCommands.CHECK_PLANT_HEALTH)
+async def checkPlantHealth(*args):
+    
+
+
 app.router.add_get('/', index)
 print('here1')
 

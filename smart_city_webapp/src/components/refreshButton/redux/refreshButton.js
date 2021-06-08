@@ -22,9 +22,9 @@ export const RefreshButtonSlice = createSlice({
   },
   extraReducers: {
     [refreshDataAsync.fulfilled]: (state, action) => {
-      state.temperature = action.payload;
-      console.log(action);
-      state.soilMoisture = (Math.random() * (22.000 - 24.000) + 24.000).toFixed(2);
+      state.temperature = action.payload.temp;
+      console.log(action.payload);
+      state.soilMoisture = action.payload.soilMoisture;
     },
   },
 });
