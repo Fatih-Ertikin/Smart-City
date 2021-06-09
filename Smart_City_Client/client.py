@@ -34,7 +34,7 @@ def serve():
     if __name__ == '__main__':
         global app
         app = socketio.Middleware(sio, app)
-        eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 6000)), app)
+        eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 9025)), app)
 
 def index(request):
     with open('index.html') as f:
