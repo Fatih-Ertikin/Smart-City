@@ -18,7 +18,7 @@ sio = socketio.Server(cors_allowed_origins='http://localhost:3000')
 
 app = Flask(__name__)
 allowedOrigins = {'/*' : {'origins': 'http://localhost:3000'}}
-CORS(app, resources = allowedOrigins, supports_credentials = true)
+CORS(app, resources = allowedOrigins, supports_credentials = True)
 
 sio.attach(app)
 
