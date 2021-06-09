@@ -31,7 +31,7 @@ async def connect(*args):
         # soilMoisture = soilSensor.read_soil_moisture()
         soilMoisture = 56
         await sio.emit('confirm_connection', {'temp': temperatures, 'soilMoisture': soilMoisture})
-        sio.sleep(1)
+        await sio.sleep(1)
 
 
 app.router.add_get('/', index)
