@@ -17,6 +17,7 @@ soilSensor = SoilMoistureSensor()
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = Flask(__name__)
+
 allowedOrigins = {'/*' : {'origins': '*'}}
 CORS(app, resources = allowedOrigins, supports_credentials = True)
 
@@ -33,7 +34,7 @@ def serve():
     if __name__ == '__main__':
         global app
         app = socketio.Middleware(sio, app)
-        eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 8080)), app)
+        eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 6000)), app)
 
 def index(request):
     with open('index.html') as f:
