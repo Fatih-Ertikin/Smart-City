@@ -43,13 +43,13 @@ def index(request):
 @sio.on('connect')
 def connect(*args):
     print('connection established')
-    # while True:
-    #     temperatures = tempSensor.read_temp()
-    #     # soilMoisture = soilSensor.read_soil_moisture()
-    #     soilMoisture = 56
-    #     sio.emit('confirm_connection', {'temp': temperatures, 'soilMoisture': soilMoisture})
-    #     sio.sleep(1)
-    sio.emit('confirm_connection')
+    while True:
+        temperatures = tempSensor.read_temp()
+        # soilMoisture = soilSensor.read_soil_moisture()
+        soilMoisture = 56
+        sio.emit('confirm_connection', {'temp': temperatures, 'soilMoisture': soilMoisture})
+        sio.sleep(1)
+    # sio.emit('confirm_connection')
 
 
 
