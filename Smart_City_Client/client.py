@@ -24,7 +24,7 @@ def index(request):
     with open('index.html') as f:
         return web.Response(text=f.read(), content_type='text/html')
 
-@sio.event
+@sio.on('connect')
 def connect(*args):
     print('connection established')
     while True:
