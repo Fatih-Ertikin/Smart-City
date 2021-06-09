@@ -2,6 +2,7 @@ import eventlet
 #eventlet.monkey_patch()
 from flask import Flask
 from flask_cors import CORS
+import threading
 
 import socketio
 import time
@@ -15,11 +16,24 @@ tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
 
 sio = socketio.Server(cors_allowed_origins='*')
-
 app = Flask(__name__)
 allowedOrigins = {'/*' : {'origins': '*'}}
 CORS(app, resources = allowedOrigins, supports_credentials = True)
 
+class Server(threading.Thread):
+    def __init__(self, thread_id):
+        threading.Thread.__init__(self)
+        self.threadId = thread_id
+    
+    def run(self):
+        print(f'starting: {self.name}')
+        serve()
+
+def serve():
+    if __name__ == '__main__':
+        global app
+        app = socketio.Middleware(sio, app)
+        eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 8080)), app)
 
 def index(request):
     with open('index.html') as f:
@@ -37,5 +51,5 @@ def connect(*args):
 
 
 
-app = socketio.Middleware(sio, app)
-eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 8080)), app)
+server_thread = Server('server-thread')
+server_thread.start()
