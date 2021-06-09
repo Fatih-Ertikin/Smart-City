@@ -53,5 +53,7 @@ def connect(*args):
 
 
 
-server_thread = Server('server-thread')
-server_thread.start()
+# server_thread = Server('server-thread')
+# server_thread.start()
+app = socketio.Middleware(sio, app)
+eventlet.wsgi.server(eventlet.listen(('', 9025)), app)
