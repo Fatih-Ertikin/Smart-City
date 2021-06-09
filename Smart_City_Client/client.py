@@ -52,7 +52,7 @@ def requestData(*args):
         # soilMoisture = soilSensor.read_soil_moisture()
         soilMoisture = 56
         sio.emit('data', {'temp': temperatures, 'soilMoisture': soilMoisture})
-        print(f'sending data...')
+        print(f'sending data... ')
         sio.sleep(1)
 
 
