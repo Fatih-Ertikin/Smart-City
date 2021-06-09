@@ -7,6 +7,7 @@ const ENDPOINT = '192.168.1.92:8080';
 
 export const socket = io(ENDPOINT);
 
-socket.on('confirm_connection', () => {
+socket.on('confirm_connection', (data) => {
   console.log('connection with server confirmed');
+  console.log(data);
 });

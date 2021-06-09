@@ -26,28 +26,16 @@ async def index(request):
 @sio.event
 async def connect(*args):
     print('connection established')
-    await sio.emit('confirm_connection')
-
-@sio.on(raspberryCommands.GET_TEMPERATURE)
-async def getTemperature(*args):
-    temperatures = tempSensor.read_temp()
-    return temperatures[0]
-
-@sio.on(raspberryCommands.GET_SOIL_MOISTURE)
-async def getSoilMoisture(*args):
-    #soilMoisture = soilSensor.read_soil_moisture()
-    #return soilMoisture
-    return 50.25
-
-@sio.on(raspberryCommands.CHECK_PLANT_HEALTH)
-async def checkPlantHealth(*args):
-    
+    while True:
+        temperatures = tempSensor.read_temp()
+        # soilMoisture = soilSensor.read_soil_moisture()
+        soilMoisture = 56
+        await sio.emit('confirm_connection', {'temp': temperatures, 'soilMoisture': soilMoisture})
+        sio.sleep(1)
 
 
 app.router.add_get('/', index)
-print('here1')
 
 ## We kick off our server
 if __name__ == '__main__':
     web.run_app(app)
-    print('here2')
