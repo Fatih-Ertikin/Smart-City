@@ -1,4 +1,7 @@
-from aiohttp import web
+import eventlet
+from flask import Flask
+from flask_cors import CORS
+
 import socketio
 import time
 import constants.commands as raspberryCommands
@@ -10,32 +13,31 @@ from sensorLibrary.SoilMoisture import SoilMoistureSensor
 tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
 
-## creates a new Async Socket IO Server
-sio = socketio.AsyncServer(cors_allowed_origins='http://localhost:3000')
-## Creates a new Aiohttp Web Application
-app = web.Application()
-# Binds our Socket.IO server to our Web App
-## instance
+
+sio = socketio.Server(cors_allowed_origins='http://localhost:3000')
+
+app = Flask(__name__)
+allowedOrigins = {'/*' : {'origins': 'http://localhost:3000'}}
+CORS(app, resources = allowedOrigins, supports_credentials = true)
+
 sio.attach(app)
 
 
-async def index(request):
+def index(request):
     with open('index.html') as f:
         return web.Response(text=f.read(), content_type='text/html')
 
 @sio.event
-async def connect(*args):
+def connect(*args):
     print('connection established')
     while True:
         temperatures = tempSensor.read_temp()
         # soilMoisture = soilSensor.read_soil_moisture()
         soilMoisture = 56
-        await sio.emit('confirm_connection', {'temp': temperatures, 'soilMoisture': soilMoisture})
-        await sio.sleep(1)
+        sio.emit('confirm_connection', {'temp': temperatures, 'soilMoisture': soilMoisture})
+        sio.sleep(1)
 
 
-app.router.add_get('/', index)
 
-## We kick off our server
-if __name__ == '__main__':
-    web.run_app(app)
+app = socketio.Middleware(sio, app)
+eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 8080)), app)
