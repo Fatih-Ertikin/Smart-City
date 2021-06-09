@@ -15,11 +15,11 @@ from sensorLibrary.SoilMoisture import SoilMoistureSensor
 tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
 
-sio = socketio.Server(cors_allowed_origins='http://192.168.1.223:3000')
+sio = socketio.Server(cors_allowed_origins='*')
 app = Flask(__name__)
 
 allowedOrigins = {'/*' : {'origins': 'http://192.168.1.223:3000'}}
-CORS(app, resources = allowedOrigins, supports_credentials = True)
+#CORS(app, resources = allowedOrigins, supports_credentials = True)
 
 class Server(threading.Thread):
     def __init__(self, thread_id):
