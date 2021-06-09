@@ -1,5 +1,5 @@
 import eventlet
-eventlet.monkey_patch()
+#eventlet.monkey_patch()
 from flask import Flask
 from flask_cors import CORS
 
@@ -14,10 +14,10 @@ from sensorLibrary.SoilMoisture import SoilMoistureSensor
 tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
 
-sio = socketio.Server(cors_allowed_origins='http://192.168.1.223:3000')
+sio = socketio.Server(cors_allowed_origins='*')
 
 app = Flask(__name__)
-allowedOrigins = {'/*' : {'origins': 'http://192.168.1.223:3000'}}
+allowedOrigins = {'/*' : {'origins': '*'}}
 CORS(app, resources = allowedOrigins, supports_credentials = True)
 
 
