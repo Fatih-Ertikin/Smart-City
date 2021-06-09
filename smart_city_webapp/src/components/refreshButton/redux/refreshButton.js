@@ -7,7 +7,7 @@ export const refreshDataAsync = createAsyncThunk(
   'refreshSensorData',
   () => new Promise((resolve, reject) => {
     try {
-      socket.emit('raspberry:cmd:readTemp', null, async (temp) => socket.emit('raspberry:cmd:readSoilMoisture', null, async (soilMoisture) => resolve({ temp, soilMoisture })));
+      socket.emit('requestData', null);
     } catch (err) {
       return reject(err);
     }
@@ -24,7 +24,7 @@ export const RefreshButtonSlice = createSlice({
     [refreshDataAsync.fulfilled]: (state, action) => {
       state.temperature = action.payload.temp;
       console.log(action.payload);
-      state.soilMoisture = action.payload.soilMoisture;
+      // state.soilMoisture = action.payload.soilMoisture;
     },
   },
 });

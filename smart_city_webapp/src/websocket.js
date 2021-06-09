@@ -9,9 +9,12 @@ export const socket = socketIO(ENDPOINT, { transports: ['websocket'], reconnecti
 
 socket.on('confirm_connection', (data) => {
   console.log('connection with server confirmed');
-  console.log(data);
 });
 
 socket.on('connect_error', (err) => {
   console.log(err.message);
+});
+
+socket.on('data', (data) => {
+  console.log(data);
 });
