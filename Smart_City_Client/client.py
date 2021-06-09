@@ -16,10 +16,10 @@ tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
 
 sio = socketio.Server(cors_allowed_origins='*')
-#app = Flask(__name__)
+app = Flask(__name__)
 
-allowedOrigins = {'/*' : {'origins': 'http://192.168.1.223:3000'}}
-#CORS(app, resources = allowedOrigins, supports_credentials = True)
+allowedOrigins = {'/*' : {'origins': '*'}}
+CORS(app, resources = allowedOrigins, supports_credentials = True)
 
 class Server(threading.Thread):
     def __init__(self, thread_id):
