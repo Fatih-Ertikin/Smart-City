@@ -18,6 +18,7 @@ export const useStyles = makeStyles((theme) => ({
 const MoistureSensor = ({ soilMoistureLevel }) => {
   const [currentSoilMoisture, setCurrentSoilMoisture] = useState(14);
   useEffect(() => {
+    console.log(soilMoistureLevel);
     setCurrentSoilMoisture(soilMoistureLevel);
   }, [soilMoistureLevel]);
 

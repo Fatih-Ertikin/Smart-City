@@ -9,7 +9,6 @@ import { SensorData } from './components/sensorData/SensorData';
 import { TileShadow } from './style/globalStyles';
 import { RefreshButton } from './components/refreshButton/RefreshButton';
 import { PlantInformation } from './components/plantInformation/plantInformation';
-
 import './App.css';
 
 const useStyles = makeStyles((theme) => ({
