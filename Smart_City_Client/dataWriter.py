@@ -10,7 +10,7 @@ def writeData(temperature, soilMoisture):
     json_data = None
 
     with open('data.json', 'r') as f:
-        json_data = json.load(f)
+        json_data = json.load(f.replace("\\", r"\\"))
         print(f'[INFO] following JSON data was read: {json_data}')
         f.close()
     
