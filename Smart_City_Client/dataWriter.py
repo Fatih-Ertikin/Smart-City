@@ -9,8 +9,8 @@ def writeData(temperature, soilMoisture):
     today = date.today()
     json_data = None
 
-    with open('data.json', 'r') as f:
-        json_data = json.load(f.replace("\\", r"\\"))
+    with open('data.json') as f:
+        json_data = json.load(f)
         print(f'[INFO] following JSON data was read: {json_data}')
         f.close()
     
