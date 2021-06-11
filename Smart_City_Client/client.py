@@ -54,7 +54,7 @@ def requestData(*args):
     # if datetime.now() == midnight:
     temperatures = tempSensor.read_temp()
     soilMoisture = soilSensor.read_soil_moisture()
-    writeData(temperatures[t0], soilMoisture)
+    writeData(temperatures[0], soilMoisture)
 
     while True:
         temperatures = tempSensor.read_temp()
