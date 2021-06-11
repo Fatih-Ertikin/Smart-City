@@ -22,3 +22,7 @@ def writeData(temperature, soilMoisture):
         json.dump(json_data, f)
         f.close()
     print('[INFO] Succesfully wrote data')
+
+def readData():
+    with open('data.json') as f:
+        return json.load(f)

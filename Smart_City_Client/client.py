@@ -13,6 +13,7 @@ import constants.response as raspberryResponses
 from sensorLibrary.Temperature import TemperatureSensor
 from sensorLibrary.SoilMoisture import SoilMoistureSensor
 from dataWriter import writeData
+from dataWriter import readData
 
 tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
@@ -45,7 +46,8 @@ def index(request):
 @sio.on('connect')
 def connect(*args):
     print('connection established')
-    sio.emit('confirm_connection')
+    data = readData()
+    sio.emit('confirm_connection', data)
 
 @sio.on('requestData')
 def requestData(*args):
