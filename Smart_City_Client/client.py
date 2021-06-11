@@ -56,7 +56,7 @@ def requestData(*args):
     soilMoisture = soilSensor.read_soil_moisture()
     writeData(temperatures[t0], soilMoisture)
 
-     while True:
+    while True:
         temperatures = tempSensor.read_temp()
         # soilMoisture = soilSensor.read_soil_moisture()
         soilMoisture = 56
