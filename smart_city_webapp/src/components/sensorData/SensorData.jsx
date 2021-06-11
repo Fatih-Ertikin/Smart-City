@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Line } from 'react-chartjs-2';
@@ -9,7 +11,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SensorData = () => {
+export const SensorData = ({ chartData }) => {
+  const [tableData, setTableData] = useState([]);
+
+  console.log(chartData);
+
+  useEffect(() => {
+    console.log(chartData);
+    setTableData(chartData);
+  }, [chartData]);
+
   const data = {
     labels: [0, 1, 2, 3, 4, 5, 6],
     datasets: [
@@ -52,3 +63,9 @@ export const SensorData = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  chartData: state.refreshButton.chartData,
+});
+
+export default connect(mapStateToProps)(SensorData);

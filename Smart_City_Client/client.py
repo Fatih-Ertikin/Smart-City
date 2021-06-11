@@ -50,7 +50,7 @@ def connect(*args):
     sio.emit('confirm_connection', data)
 
 @sio.on('getChartData')
-def connect(*args):
+def getChartData(*args):
     data = readData()
     return data
 

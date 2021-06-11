@@ -8,7 +8,11 @@ export const refreshDataAsync = createAsyncThunk(
   'refreshSensorData',
   () => new Promise((resolve, reject) => {
     try {
-      socket.emit('getChartData', null, (data) => resolve(data));
+      console.log('getting data...');
+      socket.emit('getChartData', null, (data) => {
+        console.log(data);
+        resolve(data);
+      });
     } catch (err) {
       return reject(err);
     }
