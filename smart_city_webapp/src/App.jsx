@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { NavigationBar } from './base/navigationBar/navigationBar';
 import MoistureSensor from './components/moistureSensor/MoistureSensor';
 import LightSensor from './components/lightSensor/LightSensor';
-import { SensorData } from './components/sensorData/SensorData';
+import SensorData from './components/sensorData/SensorData';
 import { TileShadow } from './style/globalStyles';
 import { RefreshButton } from './components/refreshButton/RefreshButton';
 import { PlantInformation } from './components/plantInformation/plantInformation';
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    height: 500,
+    height: 600,
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,

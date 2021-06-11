@@ -12,7 +12,6 @@ socket.emit('requestData', null);
 
 socket.on('confirm_connection', (data) => {
   console.log('connection with server confirmed');
-  console.log(data);
 });
 
 socket.on('connect_error', (err) => {
