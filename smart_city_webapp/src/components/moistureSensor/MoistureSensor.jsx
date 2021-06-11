@@ -29,7 +29,7 @@ const MoistureSensor = ({ soilMoistureLevel }) => {
     <SensorInformation
       sensorName="Grondvochtigheid"
       sensorType="Capactive V1.2"
-      currentValue={currentSoilMoisture}
+      currentValue={currentSoilMoisture.toFixed(2)}
       measurementUnit="%"
       iconComponent={getIcon()}
     />

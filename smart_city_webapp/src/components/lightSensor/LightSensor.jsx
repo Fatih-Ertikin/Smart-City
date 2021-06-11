@@ -29,7 +29,7 @@ const LightSensor = ({ temperature }) => {
     <SensorInformation
       sensorName="Temperatuur"
       sensorType="temperatuur sensor"
-      currentValue={currentTemp}
+      currentValue={currentTemp.toFixed(2)}
       measurementUnit="celcius"
       iconComponent={getIcon()}
     />
