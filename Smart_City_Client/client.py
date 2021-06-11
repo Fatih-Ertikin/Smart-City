@@ -65,8 +65,7 @@ def requestData(*args):
 
     while True:
         temperatures = tempSensor.read_temp()
-        # soilMoisture = soilSensor.read_soil_moisture()
-        soilMoisture = 56
+        soilMoisture = soilSensor.read_soil_moisture()
         sio.emit('data', {'temp': temperatures, 'soilMoisture': soilMoisture})
         print(f'sending data... ')
         sio.sleep(1)
