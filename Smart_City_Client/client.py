@@ -3,6 +3,8 @@ import eventlet
 from flask import Flask
 from flask_cors import CORS
 import threading
+from datetime import date
+from datetime import datetime
 
 import socketio
 import time
@@ -10,7 +12,7 @@ import constants.commands as raspberryCommands
 import constants.response as raspberryResponses
 from sensorLibrary.Temperature import TemperatureSensor
 from sensorLibrary.SoilMoisture import SoilMoistureSensor
-
+from dataWriter import writeData
 
 tempSensor = TemperatureSensor()
 soilSensor = SoilMoistureSensor()
@@ -47,6 +49,13 @@ def connect(*args):
 
 @sio.on('requestData')
 def requestData(*args):
+    today = date.today()
+    midnight = datetime.combine(today, datetime.min.time())
+    # if datetime.now() == midnight:
+    temperatures = tempSensor.read_temp()
+    soilMoisture = soilSensor.read_soil_moisture()
+    writeData(temperatures[t0], soilMoisture)
+
      while True:
         temperatures = tempSensor.read_temp()
         # soilMoisture = soilSensor.read_soil_moisture()
