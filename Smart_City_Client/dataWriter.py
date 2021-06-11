@@ -14,7 +14,7 @@ def writeData(temperature, soilMoisture):
         print(f'[INFO] following JSON data was read: {json_data}')
         f.close()
     
-    json_data[today.strftime("%m/%d/%Y")] = data
+    json_data[today.strftime("%d/%m/%Y")] = data
 
     print(f'[INFO] writing new data: {json_data}')
 
