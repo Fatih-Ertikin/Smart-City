@@ -8,7 +8,7 @@ export const refreshDataAsync = createAsyncThunk(
   'refreshSensorData',
   () => new Promise((resolve, reject) => {
     try {
-      // socket.emit('requestData', null);
+      socket.emit('getChartData', null, (data) => resolve(data));
     } catch (err) {
       return reject(err);
     }
@@ -20,6 +20,7 @@ export const RefreshButtonSlice = createSlice({
   initialState: {
     temperature: 0.00,
     soilMoisture: 0.00,
+    chartData: {},
   },
   reducers: {
     setSensorData: (state, action) => {
@@ -30,10 +31,11 @@ export const RefreshButtonSlice = createSlice({
   },
   extraReducers: {
     [refreshDataAsync.fulfilled]: (state, action) => {
-      state.temperature = action.payload.temp;
-      // state.soilMoisture = action.payload.soilMoisture;
+      console.log(action.payload);
+      state.chartData = action.payload;
     },
   },
 });
+
 export const { setSensorData } = RefreshButtonSlice.actions;
 export default RefreshButtonSlice.reducer;

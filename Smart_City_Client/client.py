@@ -49,6 +49,11 @@ def connect(*args):
     data = readData()
     sio.emit('confirm_connection', data)
 
+@sio.on('getChartData')
+def connect(*args):
+    data = readData()
+    return data
+
 @sio.on('requestData')
 def requestData(*args):
     today = date.today()
