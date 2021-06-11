@@ -1,1 +1,31 @@
-{"Title": "Smart City Team C", "11/06/2021": {"temperature": 25.437, "soilMoisture": 24.703230288674952}}
+{
+    "Title": "Smart City Team C",
+    "11/01/2021": {
+        "temperature": 18.34,
+        "soilMoisture": 15
+    },
+    "11/02/2021": {
+        "temperature": 21.24,
+        "soilMoisture": 30
+    },
+    "11/03/2021": {
+        "temperature": 24.23,
+        "soilMoisture": 27
+    },
+    "11/04/2021": {
+        "temperature": 22.34,
+        "soilMoisture": 36
+    },
+    "11/05/2021": {
+        "temperature": 23.356,
+        "soilMoisture": 40
+    },
+    "11/06/2021": {
+        "temperature": 25.437,
+        "soilMoisture": 18
+    },
+    "11/07/2021": {
+        "temperature": 25.437,
+        "soilMoisture": 17
+    }
+}
