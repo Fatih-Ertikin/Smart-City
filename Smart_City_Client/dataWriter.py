@@ -15,6 +15,7 @@ def writeData(temperature, soilMoisture):
     
     json_data[today] = data
     print(f'[INFO] writing new data: {json_data}')
+    print(json)
     with open('data.json') as json_file:
         json.dump(json_data, 'data.json')
     print('[INFO] Succesfully wrote data')
